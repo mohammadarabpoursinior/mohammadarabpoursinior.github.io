@@ -135,7 +135,7 @@
             <h2>Our Technology™</h2>
             <p>Our proprietary and IP protected vaccine platform platform technology is versatile with great applications for cancer and infectious diseases. Our vaccine technology consists of several modules with specialized functions, working as an immune enhancer boosting the immune system against specific targets. Augmented immunity could then destroy cancer malignancy and protect against infectious diseases.</p>
             <div class="video-container">
-                <iframe width="50%" height="200" src="https://www.youtube.com/embed/kcWT8EMYwYY" frameborder="0" allowfullscreen></iframe>
+                <iframe width="20%" height="100" src="https://www.youtube.com/embed/kcWT8EMYwYY" frameborder="0" allowfullscreen></iframe>
             </div>
             <img src="hala.jpg" alt="Vaccine Technology" width="1000" style="margin-bottom: 40px;">
             <h2>Pipelines™</h2>
