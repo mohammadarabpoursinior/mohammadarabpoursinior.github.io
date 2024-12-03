@@ -11,6 +11,7 @@
             padding: 0;
             color: #333;
             background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            overflow-x: hidden;
         }
         header {
             background: linear-gradient(to right, #0056b3, #007bff);
@@ -27,6 +28,7 @@
         header h1 {
             font-size: 28px;
             margin: 0;
+            animation: fadeIn 1.5s ease-in-out;
         }
         main {
             padding: 40px 30px;
@@ -66,10 +68,95 @@
             margin: 5px 0;
             font-size: 16px;
         }
-        .protein-designer {
-            margin: 30px 0;
-            width: 100%;
-            height: 400px;
+        /* Special effects */
+        section:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease-in-out;
+        }
+        header h1::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #00d1ff;
+            margin: 10px 0 0;
+            animation: expandLine 2s infinite;
+        }
+        /* Rotating Molecule */
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .molecule {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            animation: spin 10s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .molecule div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+        }
+        .molecule .center {
+            background-color: #ff4081;
+            width: 25px;
+            height: 25px;
+        }
+        .molecule .electron {
+            transform: rotateX(45deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(2) {
+            transform: rotateX(-45deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(3) {
+            transform: rotateY(90deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(4) {
+            transform: rotateY(45deg) translateZ(70px);
+        }
+        @keyframes spin {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes expandLine {
+            0%, 100% {
+                width: 50px;
+            }
+            50% {
+                width: 100px;
+            }
+        }
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 24px;
+            }
+            h2 {
+                font-size: 22px;
+            }
+            p {
+                font-size: 16px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -86,9 +173,16 @@
         </section>
         <section id="our-technology">
             <h2>Our Technology</h2>
+            <div class="molecule-container">
+                <div class="molecule">
+                    <div class="center"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                </div>
+            </div>
             <p>Our proprietary and IP-protected vaccine platform technology offers broad potential in disease prevention and treatments. By enhancing immune system responses, our vaccines aim to prevent infections and support recovery from various conditions, including chronic and severe illnesses.</p>
-            <!-- Protein Designer -->
-            <div id="protein-designer" class="protein-designer"></div>
         </section>
         <section id="contact-us">
             <h2>Contact Us</h2>
@@ -99,89 +193,5 @@
     <footer>
         <p>&copy; 2024 Next Generation Vaccine&trade;. All rights reserved.</p>
     </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script>
-        // 3D Protein Designer Setup
-        const container = document.getElementById('protein-designer');
-
-        // Set up the scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(container.offsetWidth, container.offsetHeight);
-        container.appendChild(renderer.domElement);
-
-        // Add lighting
-        const light = new THREE.PointLight(0xffffff, 1, 100);
-        light.position.set(10, 10, 10);
-        scene.add(light);
-
-        const ambientLight = new THREE.AmbientLight(0x404040); // Soft light
-        scene.add(ambientLight);
-
-        // Atom (Sphere) and Bond (Cylinder) materials
-        const atomMaterial = new THREE.MeshPhongMaterial({ color: 0x007bff });
-        const bondMaterial = new THREE.MeshPhongMaterial({ color: 0x555555 });
-
-        // Create atoms and bonds
-        const atoms = [];
-        const bonds = [];
-        const atomPositions = [
-            { x: 0, y: 0, z: 0 },
-            { x: 2, y: 0, z: 0 },
-            { x: 1, y: 1.5, z: 0 },
-            { x: 1, y: -1.5, z: 0 },
-            { x: 1, y: 0, z: 2 }
-        ];
-
-        atomPositions.forEach(pos => {
-            const atom = new THREE.Mesh(
-                new THREE.SphereGeometry(0.3, 32, 32),
-                atomMaterial
-            );
-            atom.position.set(pos.x, pos.y, pos.z);
-            atoms.push(atom);
-            scene.add(atom);
-        });
-
-        // Connect atoms with bonds
-        const createBond = (start, end) => {
-            const direction = new THREE.Vector3().subVectors(end, start);
-            const bondLength = direction.length();
-            const bondGeometry = new THREE.CylinderGeometry(0.05, 0.05, bondLength, 32);
-            const bond = new THREE.Mesh(bondGeometry, bondMaterial);
-
-            // Position the bond between atoms
-            bond.position.copy(start).add(direction.multiplyScalar(0.5));
-            bond.lookAt(end);
-            bonds.push(bond);
-            scene.add(bond);
-        };
-
-        // Define bonds between atoms
-        createBond(new THREE.Vector3(0, 0, 0), new THREE.Vector3(2, 0, 0));
-        createBond(new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 1.5, 0));
-        createBond(new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, -1.5, 0));
-        createBond(new THREE.Vector3(0, 0, 0), new THREE.Vector3(1, 0, 2));
-
-        // Add rotation animation
-        camera.position.z = 6;
-
-        const animate = () => {
-            requestAnimationFrame(animate);
-            scene.rotation.y += 0.01;
-            renderer.render(scene, camera);
-        };
-
-        animate();
-
-        // Make the canvas responsive
-        window.addEventListener('resize', () => {
-            renderer.setSize(container.offsetWidth, container.offsetHeight);
-            camera.aspect = container.offsetWidth / container.offsetHeight;
-            camera.updateProjectionMatrix();
-        });
-    </script>
 </body>
 </html>
