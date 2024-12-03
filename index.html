@@ -82,6 +82,53 @@
             margin: 10px 0 0;
             animation: expandLine 2s infinite;
         }
+        /* Rotating Molecule */
+        .molecule-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .molecule {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            animation: spin 10s linear infinite;
+            transform-style: preserve-3d;
+        }
+        .molecule div {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #007bff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.6);
+        }
+        .molecule .center {
+            background-color: #ff4081;
+            width: 25px;
+            height: 25px;
+        }
+        .molecule .electron {
+            transform: rotateX(45deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(2) {
+            transform: rotateX(-45deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(3) {
+            transform: rotateY(90deg) translateZ(70px);
+        }
+        .molecule .electron:nth-child(4) {
+            transform: rotateY(45deg) translateZ(70px);
+        }
+        @keyframes spin {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
         /* Animations */
         @keyframes fadeIn {
             from {
@@ -126,6 +173,15 @@
         </section>
         <section id="our-technology">
             <h2>Our Technology</h2>
+            <div class="molecule-container">
+                <div class="molecule">
+                    <div class="center"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                    <div class="electron"></div>
+                </div>
+            </div>
             <p>Our proprietary and IP-protected vaccine platform technology offers broad potential in disease prevention and treatments. By enhancing immune system responses, our vaccines aim to prevent infections and support recovery from various conditions, including chronic and severe illnesses.</p>
         </section>
         <section id="contact-us">
