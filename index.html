@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next Generation Vaccine</title>
+    <title>Site Under Construction</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -11,131 +11,114 @@
             padding: 0;
             color: #333;
             background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
         header {
-            background: linear-gradient(to right, #0056b3, #007bff);
-            color: #fff;
-            display: flex;
-            align-items: center;
-            padding: 20px 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeInDown 2s ease-in-out;
         }
         header img {
-            max-height: 80px;
-            margin-right: 20px;
+            max-height: 100px;
         }
         header h1 {
-            font-size: 28px;
-            margin: 0;
-            animation: fadeIn 1.5s ease-in-out;
-        }
-        main {
-            padding: 40px 30px;
-        }
-        section {
-            margin-bottom: 60px;
-        }
-        h2 {
+            font-size: 36px;
+            margin: 20px 0 10px;
             color: #0056b3;
-            font-size: 26px;
-            margin-bottom: 15px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #555;
-        }
-        a {
-            color: #0056b3;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #003f7f;
-            text-decoration: underline;
-        }
-        footer {
-            background: linear-gradient(to right, #007bff, #0056b3);
-            color: #fff;
-            text-align: center;
-            padding: 15px 20px;
-            position: relative;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer p {
-            margin: 5px 0;
-            font-size: 16px;
-        }
-        /* Special effects */
-        section:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease-in-out;
         }
         header h1::after {
             content: '';
             display: block;
-            width: 50px;
-            height: 3px;
-            background: #00d1ff;
-            margin: 10px 0 0;
-            animation: expandLine 2s infinite;
+            width: 60px;
+            height: 4px;
+            background: #007bff;
+            margin: 10px auto;
+            animation: pulse 1.5s infinite;
+        }
+        h2 {
+            color: #ff5722;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 18px;
+            text-align: center;
+            color: #555;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #0056b3;
+        }
+        .construction-animation {
+            position: relative;
+            margin-top: 30px;
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+        }
+        .crane {
+            animation: swing 3s ease-in-out infinite;
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
         }
         /* Animations */
-        @keyframes fadeIn {
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
-        @keyframes expandLine {
+        @keyframes swing {
             0%, 100% {
-                width: 50px;
+                transform: rotate(-5deg);
             }
             50% {
-                width: 100px;
+                transform: rotate(5deg);
             }
         }
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 24px;
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
             }
-            h2 {
-                font-size: 22px;
-            }
-            p {
-                font-size: 16px;
+            50% {
+                transform: scale(1.2);
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <img src="299815098_382893934015267_1476765749098205993_n.jpg" alt="Next Generation Vaccine Logo">
         <h1>Next Generation Vaccine</h1>
     </header>
-    <main>
-        <section id="about-us">
-            <h2>About Us</h2>
-            <p>Next Generation Vaccine&trade; is committed to providing cutting-edge vaccines to safeguard public health. We develop innovative solutions to combat infectious diseases.</p>
-        </section>
-        <section id="our-technology">
-            <h2>Our Technology</h2>
-            <p>Our proprietary platform technology offers broad potential in disease prevention and treatments. By enhancing immune system responses, our vaccines aim to prevent infections and support recovery from various conditions, including chronic and severe illnesses.</p>
-        </section>
-        <section id="contact-us">
-            <h2>Contact Us</h2>
-            <p>If you have any questions or inquiries, please feel free to contact us:</p>
-            <p>Email: <a href="mailto:info@nextgenvax.com">info@nextgenvax.com</a></p>
-        </section>
-    </main>
+   
+    <p>Our website is currently under construction.</p>
+    <div class="construction-animation">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#0056b3" class="crane">
+            <path d="M502.63 214.63l-40-40A24 24 0 0 0 438.63 192h-48a24 24 0 0 0-16.97 7.03l-40 40a24 24 0 0 0 0 33.94l40 40A24 24 0 0 0 390.63 320h48a24 24 0 0 0 16.97-7.03l40-40a24 24 0 0 0 0-33.94zm-74.97 45.94h-16v16a16 16 0 0 1-32 0v-16h-16a16 16 0 0 1 0-32h16v-16a16 16 0 0 1 32 0v16h16a16 16 0 0 1 0 32zM176 96h-32v80a16 16 0 0 1-32 0V96h-32a16 16 0 0 1-11.31-27.31l80-80a16 16 0 0 1 22.62 0l80 80A16 16 0 0 1 208 96zm320 400a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h144V256H64a32 32 0 0 1-22.62-54.63l192-192a32 32 0 0 1 45.24 0l192 192A32 32 0 0 1 448 256h-112v192h144a16 16 0 0 1 16 16zM320 224H192v192h128z"/>
+        </svg>
+    </div>
     <footer>
-        <p>&copy; 2024 Next Generation Vaccine&trade;. All rights reserved.</p>
+        &copy; 2024 Next Generation Vaccine&trade;. All rights reserved.
     </footer>
 </body>
 </html>
