@@ -3,72 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Under Construction</title>
+    <title>NextGenVax | Advanced Immunotherapy</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        :root {
+            --primary-blue: #007bff;
+            --dark-navy: #001f3f;
+            --overlay-dark: rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body, html {
+            font-family: 'Roboto', sans-serif;
             color: #333;
-            background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- HERO SECTION (CLIF) --- */
+        .hero {
+            height: 100vh;
+            background: 
+                linear-gradient(var(--overlay-dark), var(--overlay-dark)), 
+                url('clif.png'); /* Your geological formation image */
+            background-size: cover;
+            background-position: center;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
+            color: white;
+            padding: 40px 8%;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            height: 100vh;
-            overflow: hidden;
-        }
-        p {
-            font-size: 18px;
-            text-align: center;
-            color: #555;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        a:hover {
-            color: #0056b3;
-        }
-        .construction-animation {
-            position: relative;
-            margin-top: 30px;
             width: 100%;
-            max-width: 500px;
-            height: 300px;
         }
-        .crane {
-            animation: swing 3s ease-in-out infinite;
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            /* Using a filter to make the logo pop against the dark image */
+            filter: brightness(1.2) contrast(1.1);
         }
-        footer {
-            position: absolute;
-            bottom: 20px;
+
+        .menu-icon {
+            font-size: 26px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .menu-icon:hover {
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(35px, 6vw, 65px);
+            font-weight: 700;
+            max-width: 900px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+        }
+
+        /* --- MISSION SECTION (GEMI) --- */
+        .mission {
+            position: relative;
+            padding: 120px 10%;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                url('gemi.png'); /* Your lab background image */
+            background-size: cover;
+            background-attachment: fixed; /* Parallax effect like professional biotech sites */
+            background-position: center;
             text-align: center;
-            color: #888;
-            font-size: 14px;
         }
-        /* Animations */
-        @keyframes swing {
-            0%, 100% {
-                transform: rotate(-5deg);
-            }
-            50% {
-                transform: rotate(5deg);
-            }
+
+        .mission-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mission h2 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 4px;
+            color: var(--primary-blue);
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .mission p {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--dark-navy);
+            line-height: 1.7;
+        }
+
+        /* --- FOOTER SECTION --- */
+        footer {
+            background: var(--dark-navy);
+            color: white;
+            padding: 80px 10% 40px;
+            text-align: center;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 700;
+        }
+
+        .email-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(20px, 4vw, 32px);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--primary-blue);
+            border-bottom-color: white;
+        }
+
+        .copyright {
+            margin-top: 60px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Smooth scroll indicator (optional extra) */
+        .scroll-hint {
+            margin-bottom: 20px;
+            font-size: 12px;
+            opacity: 0.6;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 30px 5%; }
+            .mission { padding: 80px 5%; }
+            .mission p { font-size: 18px; }
         }
     </style>
 </head>
 <body>
-    <p> Website is currently under construction.</p>
-    <div class="construction-animation">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#0056b3" class="crane">
-            <path d="M502.63 214.63l-40-40A24 24 0 0 0 438.63 192h-48a24 24 0 0 0-16.97 7.03l-40 40a24 24 0 0 0 0 33.94l40 40A24 24 0 0 0 390.63 320h48a24 24 0 0 0 16.97-7.03l40-40a24 24 0 0 0 0-33.94zm-74.97 45.94h-16v16a16 16 0 0 1-32 0v-16h-16a16 16 0 0 1 0-32h16v-16a16 16 0 0 1 32 0v16h16a16 16 0 0 1 0 32zM176 96h-32v80a16 16 0 0 1-32 0V96h-32a16 16 0 0 1-11.31-27.31l80-80a16 16 0 0 1 22.62 0l80 80A16 16 0 0 1 208 96zm320 400a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-32a16 16 0 0 1 16-16h144V256H64a32 32 0 0 1-22.62-54.63l192-192a32 32 0 0 1 45.24 0l192 192A32 32 0 0 1 448 256h-112v192h144a16 16 0 0 1 16 16zM320 224H192v192h128z"/>
-        </svg>
-    </div>
+
+    <section class="hero">
+        <div class="top-bar">
+            <img src="299815098_382893934015267_1476765749098205993_n.jpg" alt="NextGenVax Logo" class="logo-img">
+            <div class="menu-icon">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Pursuing More Potent and Durable Immune Responses for Cancer</h1>
+        </div>
+
+        <div class="scroll-hint">
+            <i class="fas fa-chevron-down"></i> SCROLL
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="mission-inner">
+            <h2>Our Mission</h2>
+            <p>
+                NextGenVax’s goal is to develop groundbreaking immunotherapies for cancer. 
+                Our approach focuses on the use of multi-specific antibodies to bind to a tumor target 
+                and generate a therapeutic immune response by leveraging the natural power of a patient’s 
+                immune system to recognize and destroy tumor cells.
+            </p>
+        </div>
+    </section>
+
     <footer>
-        &copy; 2024 Next Generation Vaccine&trade;. All rights reserved.
+        <div class="contact-box">
+            <span class="contact-label">General Inquiries</span>
+            <a href="mailto:info@nextgenvax.com" class="email-link">info@nextgenvax.com</a>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 NextGenVax Inc. All Rights Reserved.
+        </div>
     </footer>
+
 </body>
 </html>
