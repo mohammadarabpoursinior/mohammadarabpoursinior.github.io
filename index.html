@@ -12,7 +12,7 @@
         :root {
             --primary-blue: #0056b3;
             --dark-navy: #0a192f;
-            --overlay-dark: rgba(0, 0, 0, 0.5);
+            --overlay-light: rgba(0, 0, 0, 0.3); /* Lighter overlay for the new image */
             --soft-white: #f8fbfb;
         }
 
@@ -55,7 +55,7 @@
         /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(var(--overlay-dark), var(--overlay-dark)), url('clif.png');
+            background: linear-gradient(var(--overlay-light), var(--overlay-light)), url('clif.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -64,7 +64,7 @@
             color: white;
         }
 
-        .hero-content { max-width: 900px; }
+        .hero-content { max-width: 900px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
 
         .hero-content h1 {
             font-family: 'Montserrat', sans-serif;
@@ -72,14 +72,6 @@
             font-weight: 700;
             line-height: 1.1;
             margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .hero-content p {
-            font-size: clamp(18px, 2vw, 24px);
-            font-weight: 300;
-            color: rgba(255,255,255,0.95);
-            max-width: 650px;
         }
 
         /* --- MISSION SECTION --- */
@@ -108,7 +100,6 @@
             max-width: 950px;
             margin: 0 auto;
             color: var(--dark-navy);
-            line-height: 1.6;
         }
 
         /* --- CONSULTING TEAM --- */
@@ -120,15 +111,11 @@
             gap: 60px;
         }
 
-        .consulting-text { flex: 1; }
-        .consulting-image { flex: 1; }
         .consulting-image img {
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
-
-        .consulting h2 { font-family: 'Montserrat', sans-serif; font-size: 38px; margin-bottom: 20px; color: var(--dark-navy); }
 
         /* --- LOCATION --- */
         .location {
@@ -144,31 +131,56 @@
             margin-top: 40px;
         }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (REFINED) --- */
         footer {
             background: var(--dark-navy);
             color: white;
-            padding: 100px 10% 40px;
-            text-align: center;
+            padding: 60px 8% 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align everything to the left */
+            text-align: left;
+        }
+
+        .footer-contact {
+            margin-bottom: 40px;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-bottom: 8px;
+            text-transform: uppercase;
         }
 
         .email-link {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(24px, 4vw, 36px);
+            font-size: 18px; /* Smaller font size */
             color: white;
             text-decoration: none;
-            font-weight: 700;
-            border-bottom: 2px solid var(--primary-blue);
+            font-weight: 400;
             transition: 0.3s;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
-        .email-link:hover { color: var(--primary-blue); border-bottom-color: white; }
+        .email-link:hover {
+            color: var(--primary-blue);
+            border-bottom-color: var(--primary-blue);
+        }
 
-        .copyright { margin-top: 70px; font-size: 11px; opacity: 0.4; letter-spacing: 1px; }
+        .copyright {
+            font-size: 10px;
+            opacity: 0.3;
+            letter-spacing: 1px;
+            width: 100%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+        }
 
         @media (max-width: 992px) {
             .consulting { flex-direction: column; text-align: center; }
-            nav { padding: 10px 5%; }
         }
     </style>
 </head>
@@ -185,7 +197,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Pursuing a Brighter Future by Clearing Cancer</h1>
-            <p>Advancing multi-specific antibody platforms to unlock the full potential of the human immune system.</p>
+            <p>Advancing multi-specific antibody platforms inspired by the natural precision of the human immune system.</p>
         </div>
     </section>
 
@@ -193,8 +205,7 @@
         <span class="section-tag">Our Vision</span>
         <p>
             NextGenVax is committed to redefining cancer care. Our mission is to develop 
-            therapies that don't just treat, but fundamentally clear tumor cells by 
-            leveraging the natural precision of the body's own defenses.
+            therapies that fundamentally clear tumor cells by leveraging the body's own defenses.
         </p>
     </section>
 
@@ -202,10 +213,7 @@
         <div class="consulting-text">
             <span class="section-tag">Leadership</span>
             <h2>Our Consulting Team</h2>
-            <p>
-                Bridging global expertise in oncology, immunology, and clinical strategy to 
-                accelerate the path from laboratory breakthrough to patient recovery.
-            </p>
+            <p>Bridging global expertise in oncology and immunology to accelerate breakthroughs.</p>
         </div>
         <div class="consulting-image">
             <img src="cons.png" alt="Consulting Team">
@@ -215,16 +223,20 @@
     <section class="location">
         <span class="section-tag">Operational Hub</span>
         <h2>Oslo Biotech Incubator</h2>
-        <p>Headquartered in Oslo's premier life science district, driving biotech innovation for a global impact.</p>
         <div class="location-image">
             <img src="bil.png" alt="Oslo Location">
         </div>
     </section>
 
     <footer>
-        <span style="display:block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2px; opacity: 0.7;">INQUIRIES</span>
-        <a href="mailto:info@nextgenvax.com" class="email-link">info@nextgenvax.com</a>
-        <div class="copyright">&copy; 2026 NextGenVax Inc. All Rights Reserved.</div>
+        <div class="footer-contact">
+            <span class="contact-label">General Inquiries</span>
+            <a href="mailto:info@nextgenvax.com" class="email-link">info@nextgenvax.com</a>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2026 NextGenVax Inc. All Rights Reserved.
+        </div>
     </footer>
 
 </body>
