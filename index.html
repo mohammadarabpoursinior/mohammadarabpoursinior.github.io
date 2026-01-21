@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGenVax | Next-Generation Immunotherapy</title>
+    <title>NextGenVax | Pursuing a Brighter Future</title>
     
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -12,8 +12,8 @@
         :root {
             --primary-blue: #0056b3;
             --dark-navy: #0a192f;
-            --overlay-dark: rgba(0, 0, 0, 0.55);
-            --soft-white: #f4f7f6;
+            --overlay-dark: rgba(0, 0, 0, 0.5);
+            --soft-white: #f8fbfb;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,42 +27,30 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 12px 8%;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
             z-index: 1000;
-            transition: all 0.3s ease;
         }
 
-        .brand-container {
+        .brand-link {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             text-decoration: none;
         }
 
-        .logo-img {
-            height: 45px;
-            width: auto;
-        }
+        .logo-nav { height: 40px; width: auto; }
 
-        .brand-name {
+        .brand-text {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 20px;
             color: var(--dark-navy);
             letter-spacing: -0.5px;
         }
 
-        .brand-name span {
-            color: var(--primary-blue);
-        }
-
-        .menu-icon {
-            font-size: 24px;
-            color: var(--dark-navy);
-            cursor: pointer;
-        }
+        .brand-text span { color: var(--primary-blue); }
 
         /* --- HERO SECTION --- */
         .hero {
@@ -76,19 +64,28 @@
             color: white;
         }
 
+        .hero-content { max-width: 900px; }
+
         .hero-content h1 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(32px, 6vw, 60px);
+            font-size: clamp(38px, 6vw, 68px);
             font-weight: 700;
-            max-width: 850px;
             line-height: 1.1;
-            margin-top: 60px; /* Offset for sticky nav */
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: clamp(18px, 2vw, 24px);
+            font-weight: 300;
+            color: rgba(255,255,255,0.95);
+            max-width: 650px;
         }
 
         /* --- MISSION SECTION --- */
         .mission {
             padding: 120px 10%;
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('gemi.png');
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('gemi.png');
             background-size: cover;
             background-attachment: fixed;
             text-align: center;
@@ -100,17 +97,18 @@
             font-size: 12px;
             letter-spacing: 3px;
             color: var(--primary-blue);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: block;
             font-weight: 700;
         }
 
         .mission p {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 300;
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
             color: var(--dark-navy);
+            line-height: 1.6;
         }
 
         /* --- CONSULTING TEAM --- */
@@ -126,16 +124,11 @@
         .consulting-image { flex: 1; }
         .consulting-image img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .consulting h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: var(--dark-navy);
-        }
+        .consulting h2 { font-family: 'Montserrat', sans-serif; font-size: 38px; margin-bottom: 20px; color: var(--dark-navy); }
 
         /* --- LOCATION --- */
         .location {
@@ -146,8 +139,8 @@
 
         .location-image img {
             width: 100%;
-            max-width: 1000px;
-            border-radius: 8px;
+            max-width: 1100px;
+            border-radius: 10px;
             margin-top: 40px;
         }
 
@@ -155,13 +148,13 @@
         footer {
             background: var(--dark-navy);
             color: white;
-            padding: 80px 10% 40px;
+            padding: 100px 10% 40px;
             text-align: center;
         }
 
         .email-link {
             font-family: 'Montserrat', sans-serif;
-            font-size: 30px;
+            font-size: clamp(24px, 4vw, 36px);
             color: white;
             text-decoration: none;
             font-weight: 700;
@@ -169,48 +162,49 @@
             transition: 0.3s;
         }
 
-        .email-link:hover { color: var(--primary-blue); }
+        .email-link:hover { color: var(--primary-blue); border-bottom-color: white; }
 
-        .copyright { margin-top: 50px; font-size: 11px; opacity: 0.4; letter-spacing: 1px; }
+        .copyright { margin-top: 70px; font-size: 11px; opacity: 0.4; letter-spacing: 1px; }
 
         @media (max-width: 992px) {
             .consulting { flex-direction: column; text-align: center; }
-            nav { padding: 15px 5%; }
+            nav { padding: 10px 5%; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="brand-container">
-            <img src="logo.jpg" alt="Logo" class="logo-img">
-            <span class="brand-name">NextGen<span>Vax</span></span>
+        <a href="#" class="brand-link">
+            <img src="logo.jpg" alt="NextGenVax" class="logo-nav">
+            <span class="brand-text">NextGen<span>Vax</span></span>
         </a>
         <div class="menu-icon"><i class="fas fa-bars"></i></div>
     </nav>
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Pursuing More Potent and Durable Immune Responses for Cancer</h1>
+            <h1>Pursuing a Brighter Future by Clearing Cancer</h1>
+            <p>Advancing multi-specific antibody platforms to unlock the full potential of the human immune system.</p>
         </div>
     </section>
 
     <section class="mission">
-        <span class="section-tag">Our Mission</span>
+        <span class="section-tag">Our Vision</span>
         <p>
-            NextGenVax’s goal is to develop groundbreaking immunotherapies for cancer. 
-            Our approach utilizes multi-specific antibodies to bridge molecular research 
-            with clinical healing.
+            NextGenVax is committed to redefining cancer care. Our mission is to develop 
+            therapies that don't just treat, but fundamentally clear tumor cells by 
+            leveraging the natural precision of the body's own defenses.
         </p>
     </section>
 
     <section class="consulting">
         <div class="consulting-text">
-            <span class="section-tag">Advisory</span>
-            <h2>Consulting Team</h2>
+            <span class="section-tag">Leadership</span>
+            <h2>Our Consulting Team</h2>
             <p>
-                Our consultants provide strategic guidance across scientific direction and 
-                business growth, ensuring NextGenVax remains at the forefront of innovation.
+                Bridging global expertise in oncology, immunology, and clinical strategy to 
+                accelerate the path from laboratory breakthrough to patient recovery.
             </p>
         </div>
         <div class="consulting-image">
@@ -219,16 +213,16 @@
     </section>
 
     <section class="location">
-        <span class="section-tag">Oslo, Norway</span>
-        <h2>Biotech Incubator</h2>
-        <p>Located in the heart of the Oslo city biotech hub, driving the future of European life sciences.</p>
+        <span class="section-tag">Operational Hub</span>
+        <h2>Oslo Biotech Incubator</h2>
+        <p>Headquartered in Oslo's premier life science district, driving biotech innovation for a global impact.</p>
         <div class="location-image">
             <img src="bil.png" alt="Oslo Location">
         </div>
     </section>
 
     <footer>
-        <span style="display:block; margin-bottom: 15px; font-size: 12px; letter-spacing: 2px;">CONTACT</span>
+        <span style="display:block; margin-bottom: 20px; font-size: 12px; letter-spacing: 2px; opacity: 0.7;">INQUIRIES</span>
         <a href="mailto:info@nextgenvax.com" class="email-link">info@nextgenvax.com</a>
         <div class="copyright">&copy; 2026 NextGenVax Inc. All Rights Reserved.</div>
     </footer>
