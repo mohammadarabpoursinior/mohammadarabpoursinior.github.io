@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -25,7 +25,6 @@
             scroll-behavior: smooth;
         }
 
-        /* --- STICKY NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -100,7 +99,6 @@
             display: flex;
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             height: 100vh;
             background: linear-gradient(var(--overlay-light), var(--overlay-light)), url('clif.png');
@@ -130,11 +128,10 @@
             max-width: 850px;
         }
 
-        /* --- COMMON SECTION STYLES --- */
         .section-tag {
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            font-size: 48 px;
+            font-size: 48px;
             letter-spacing: 3px;
             color: var(--primary-blue);
             margin-bottom: 20px;
@@ -144,7 +141,7 @@
 
         section h2 {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(20px, 2,2vw, 30px);
+            font-size: clamp(20px, 2.2vw, 30px);
             color: var(--dark-navy);
             margin-bottom: 20px;
         }
@@ -153,7 +150,6 @@
             font-size: 18px;
         }
 
-        /* --- MISSION SECTION --- */
         .mission {
             padding: 120px 10%;
             background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('gemi.png');
@@ -170,20 +166,31 @@
             color: var(--dark-navy);
         }
 
-        /* --- NEW INNOVATION SECTION --- */
         .innovation {
             padding: 100px 8%;
             background: white;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 60px;
         }
 
-        .innovation p {
+        .innovation-text,
+        .innovation-image {
+            flex: 1;
+        }
+
+        .innovation-text p {
             max-width: 950px;
-            margin: 0 auto;
             color: #444;
         }
 
-        /* --- NEW TECHNOLOGY SECTION --- */
+        .innovation-image img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: block;
+        }
+
         .technology {
             padding: 100px 8%;
             background: var(--soft-white);
@@ -205,18 +212,27 @@
             flex: 1;
         }
 
-        .technology-image a {
-            display: block;
-        }
-
-        .technology-image img {
+        .technology-video-wrapper {
+            position: relative;
             width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: block;
+            background: #000;
         }
 
-        /* --- CONSULTING TEAM --- */
+        .technology-video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 15px;
+        }
+
         .consulting {
             padding: 100px 8%;
             background: white;
@@ -236,7 +252,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* --- LOCATION --- */
         .location {
             padding: 100px 8%;
             background: var(--soft-white);
@@ -255,7 +270,6 @@
             margin-top: 40px;
         }
 
-        /* --- FOOTER --- */
         footer {
             background: var(--dark-navy);
             color: white;
@@ -301,11 +315,13 @@
             width: 100%;
             border-top: 1px solid rgba(255,255,255,0.05);
             padding-top: 20px;
+            margin-top: 20px;
         }
 
         @media (max-width: 992px) {
             .consulting,
-            .technology {
+            .technology,
+            .innovation {
                 flex-direction: column;
                 text-align: center;
             }
@@ -369,14 +385,19 @@
     </section>
 
     <section class="innovation" id="innovation">
-        <span class="section-tag">Innovation Support</span>
-        <h2>Translational Growth Support</h2>
-        <p>
-            NextGenVax is advancing a differentiated vaccine platform designed to address key limitations of 
-            conventional approaches. Our innovation focus centers on scalable mucosal vaccine that can be adapted
-            across infectious disease and cancer applications. This approach supports faster development, broader
-            accessibility, and stronger readiness for future clinical and commercial translation.
-        </p>
+        <div class="innovation-text">
+            <span class="section-tag">Innovation Support</span>
+            <h2>Translational Growth Support</h2>
+            <p>
+                NextGenVax is advancing a differentiated vaccine platform designed to address key limitations of 
+                conventional approaches. Our innovation focus centers on scalable mucosal vaccine that can be adapted
+                across infectious disease and cancer applications. This approach supports faster development, broader
+                accessibility, and stronger readiness for future clinical and commercial translation.
+            </p>
+        </div>
+        <div class="innovation-image">
+            <img src="gemi.png" alt="Translational Growth Support">
+        </div>
     </section>
 
     <section class="technology" id="technology">
@@ -395,9 +416,14 @@
             </p>
         </div>
         <div class="technology-image">
-            <a href="gemi.png" target="_blank">
-                <img src="gemi.png" alt="NextGenVax Technology Platform">
-            </a>
+            <div class="technology-video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/kcWT8EMYwYY" 
+                    title="NextGenVax Technology Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -436,9 +462,9 @@
         </div>
             
         <div class="footer-address">
-            <span class="address lale-label"> </span>
-            <a href="Address:Universitetsgata 2, 0164 Oslo" class="email-link">Office Address:Universitetsgata 2, 0164 Oslo</a>
+            <a href="#" class="email-link">Office Address: Universitetsgata 2, 0164 Oslo</a>
         </div>
+
         <div class="copyright">
             &copy; 2026 NextGenVax Inc. All Rights Reserved.
         </div>
