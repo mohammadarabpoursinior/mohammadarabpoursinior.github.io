@@ -1,495 +1,795 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextGenVax | Pursuing a Brighter Future</title>
-    
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:300,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextGenVax | Pursuing a Brighter Future</title>
 
-    <style>
-        :root {
-            --primary-blue: #0056b3;
-            --dark-navy: #0a192f;
-            --overlay-light: rgba(0, 0, 0, 0.3);
-            --soft-white: #f8fbfb;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+  <style>
+    :root {
+      --primary-blue: #0056b3;
+      --accent-green: #6dbb2d;
+      --dark-navy: #0a192f;
+      --soft-white: #f7fbff;
+      --light-gray: #eef4f8;
+      --text-dark: #233142;
+      --text-light: #5b6777;
+      --white: #ffffff;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+      --radius: 18px;
+      --nav-height: 78px;
+    }
 
-        body, html {
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 8%;
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-            z-index: 1000;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .brand-link {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.6;
+    }
 
-        .logo-nav { height: 40px; width: auto; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .brand-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 20px;
-            color: var(--dark-navy);
-            letter-spacing: -0.5px;
-        }
+    a {
+      text-decoration: none;
+    }
 
-        .brand-text span { color: var(--primary-blue); }
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
 
-        .menu-wrapper {
-            position: relative;
-        }
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+      z-index: 1000;
+    }
 
-        .menu-icon {
-            font-size: 28px;
-            color: var(--dark-navy);
-            cursor: pointer;
-            padding: 8px 10px;
-        }
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-        .nav-menu {
-            position: absolute;
-            top: 55px;
-            right: 0;
-            background: white;
-            min-width: 220px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-        }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--dark-navy);
-            padding: 14px 18px;
-            font-size: 15px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: 0.25s;
-        }
+    .logo-nav {
+      height: 46px;
+      width: auto;
+      object-fit: contain;
+    }
 
-        .nav-menu a:hover {
-            background: var(--soft-white);
-            color: var(--primary-blue);
-        }
+    .brand-text {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark-navy);
+      letter-spacing: -0.5px;
+    }
 
-        .nav-menu.show {
-            display: flex;
-        }
+    .brand-text span {
+      color: var(--primary-blue);
+    }
 
-        .hero {
-            height: 100vh;
-            background: linear-gradient(var(--overlay-light), var(--overlay-light)), url('clif.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            padding: 0 8%;
-            color: white;
-        }
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
 
-        .hero-content {
-            max-width: 900px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
+    .desktop-nav a {
+      font-size: 15px;
+      color: var(--dark-navy);
+      font-weight: 500;
+      transition: 0.25s;
+    }
 
-        .hero-content h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(38px, 6vw, 68px);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
+    .desktop-nav a:hover {
+      color: var(--primary-blue);
+    }
 
-        .hero-content p {
-            font-size: 20px;
-            max-width: 850px;
-        }
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      color: var(--dark-navy);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
 
-        .section-tag {
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            font-size: 48px;
-            letter-spacing: 3px;
-            color: var(--primary-blue);
-            margin-bottom: 20px;
-            display: block;
-            font-weight: 700;
-        }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 0;
+      background: var(--white);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
 
-        section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: clamp(20px, 2.2vw, 30px);
-            color: var(--dark-navy);
-            margin-bottom: 20px;
-        }
+    .mobile-menu a {
+      padding: 16px 4%;
+      color: var(--dark-navy);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 15px;
+    }
 
-        section p {
-            font-size: 18px;
-        }
+    .mobile-menu.show {
+      display: flex;
+    }
 
-        .mission {
-            padding: 120px 10%;
-            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('gemi.png');
-            background-size: cover;
-            background-attachment: fixed;
-            text-align: center;
-        }
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: var(--nav-height);
+      background:
+        linear-gradient(rgba(10, 25, 47, 0.58), rgba(10, 25, 47, 0.45)),
+        url('clif.png') center/cover no-repeat;
+      color: var(--white);
+    }
 
-        .mission p {
-            font-size: 26px;
-            font-weight: 300;
-            max-width: 950px;
-            margin: 0 auto;
-            color: var(--dark-navy);
-        }
+    .hero-content {
+      max-width: 860px;
+    }
 
-        .innovation {
-            padding: 100px 8%;
-            background: white;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.08);
+    }
 
-        .innovation-text,
-        .innovation-image {
-            flex: 1;
-        }
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(42px, 6vw, 74px);
+      line-height: 1.08;
+      font-weight: 800;
+      margin-bottom: 22px;
+      letter-spacing: -1px;
+    }
 
-        .innovation-text p {
-            max-width: 950px;
-            color: #444;
-        }
+    .hero p {
+      font-size: clamp(18px, 2.2vw, 24px);
+      max-width: 760px;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 32px;
+    }
 
-        .innovation-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            display: block;
-        }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-        .technology {
-            padding: 100px 8%;
-            background: var(--soft-white);
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: 0.25s;
+    }
 
-        .technology-text {
-            flex: 1;
-        }
+    .btn-primary {
+      background: var(--primary-blue);
+      color: var(--white);
+      box-shadow: 0 10px 24px rgba(0, 86, 179, 0.28);
+    }
 
-        .technology-text p {
-            color: #444;
-            margin-bottom: 16px;
-        }
+    .btn-primary:hover {
+      background: #00479a;
+      transform: translateY(-1px);
+    }
 
-        .technology-image {
-            flex: 1;
-        }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.35);
+      color: var(--white);
+      background: rgba(255,255,255,0.06);
+    }
 
-        .technology-video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            background: #000;
-        }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
 
-        .technology-video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 15px;
-        }
+    /* SECTIONS */
+    section {
+      padding: 100px 0;
+    }
 
-        .consulting {
-            padding: 100px 8%;
-            background: white;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
+    .section-tag {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--primary-blue);
+      margin-bottom: 14px;
+    }
 
-        .consulting-text,
-        .consulting-image {
-            flex: 1;
-        }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.15;
+      color: var(--dark-navy);
+      margin-bottom: 20px;
+      letter-spacing: -0.7px;
+    }
 
-        .consulting-image img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
+    .section-subtitle {
+      font-size: 19px;
+      color: var(--text-light);
+      max-width: 820px;
+    }
 
-        .location {
-            padding: 100px 8%;
-            background: var(--soft-white);
-            text-align: center;
-        }
+    /* VISION */
+    .vision {
+      background: linear-gradient(rgba(247, 251, 255, 0.92), rgba(247, 251, 255, 0.92)), url('gemi.png') center/cover no-repeat;
+      text-align: center;
+    }
 
-        .location p {
-            max-width: 900px;
-            margin: 0 auto;
-        }
+    .vision .section-title,
+    .vision .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-        .location-image img {
-            width: 100%;
-            max-width: 1100px;
-            border-radius: 10px;
-            margin-top: 40px;
-        }
+    .vision-text {
+      max-width: 950px;
+      margin: 28px auto 0;
+      font-size: 24px;
+      font-weight: 300;
+      color: var(--dark-navy);
+    }
 
-        footer {
-            background: var(--dark-navy);
-            color: white;
-            padding: 60px 8% 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
+    /* SPLIT LAYOUT */
+    .split-section {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
 
-        .footer-contact {
-            margin-bottom: 40px;
-        }
+    .split-section.reverse {
+      grid-template-columns: 1fr 1.05fr;
+    }
 
-        .contact-label {
-            display: block;
-            font-size: 11px;
-            letter-spacing: 2px;
-            opacity: 0.6;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
+    .content-card {
+      background: var(--white);
+      border-radius: var(--radius);
+    }
 
-        .email-link {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-            color: white;
-            text-decoration: none;
-            font-weight: 400;
-            transition: 0.3s;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-        }
+    .content-card p {
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 18px;
+    }
 
-        .email-link:hover {
-            color: var(--primary-blue);
-            border-bottom-color: var(--primary-blue);
-        }
+    .media-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
 
-        .copyright {
-            font-size: 10px;
-            opacity: 0.3;
-            letter-spacing: 1px;
-            width: 100%;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 20px;
-            margin-top: 20px;
-        }
+    .media-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        @media (max-width: 992px) {
-            .consulting,
-            .technology,
-            .innovation {
-                flex-direction: column;
-                text-align: center;
-            }
+    /* INNOVATION */
+    .innovation {
+      background: var(--white);
+    }
 
-            .hero {
-                padding-top: 80px;
-            }
+    /* TECHNOLOGY */
+    .technology {
+      background: var(--soft-white);
+    }
 
-            .hero-content p {
-                font-size: 18px;
-            }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #000;
+      box-shadow: var(--shadow);
+    }
 
-            .mission p {
-                font-size: 22px;
-            }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-            .nav-menu {
-                min-width: 200px;
-            }
-        }
-    </style>
+    /* LEADERSHIP */
+    .leadership {
+      background: var(--white);
+    }
+
+    /* LOCATION */
+    .location {
+      background: var(--soft-white);
+      text-align: center;
+    }
+
+    .location .section-title,
+    .location .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .location-image {
+      margin-top: 36px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    /* HIGHLIGHT STRIP */
+    .highlights {
+      background: var(--dark-navy);
+      color: var(--white);
+      padding: 70px 0;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .highlight-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 26px 22px;
+    }
+
+    .highlight-box i {
+      font-size: 26px;
+      color: #8bc7ff;
+      margin-bottom: 16px;
+    }
+
+    .highlight-box h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .highlight-box p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #081220;
+      color: var(--white);
+      padding: 70px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 36px;
+    }
+
+    .footer-brand {
+      max-width: 420px;
+    }
+
+    .footer-brand .brand-text {
+      color: var(--white);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p,
+    .footer-links a,
+    .footer-contact a,
+    .footer-contact span {
+      color: rgba(255,255,255,0.75);
+      font-size: 15px;
+    }
+
+    .footer-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+
+    .footer-links,
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      color: #8bc7ff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .split-section,
+      .split-section.reverse {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .vision-text {
+        font-size: 21px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .vision-text {
+        font-size: 19px;
+      }
+
+      .content-card p {
+        font-size: 17px;
+      }
+
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#hero" class="brand-link">
-            <img src="logo.jpg" alt="NextGenVax" class="logo-nav">
-            <span class="brand-text">NextGen<span>Vax</span></span>
-        </a>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#hero" class="brand-link">
+        <img src="logo.jpg" alt="NextGenVax logo" class="logo-nav">
+        <span class="brand-text">NextGen<span>Vax</span></span>
+      </a>
 
-        <div class="menu-wrapper">
-            <div class="menu-icon" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div class="nav-menu" id="navMenu">
-                <a href="#hero">Home</a>
-                <a href="#vision">Our Vision</a>
-                <a href="#innovation">Innovation Support</a>
-                <a href="#technology">Our Technology</a>
-                <a href="#leadership">Leadership</a>
-                <a href="#location">Operational Hub</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
+      <div class="desktop-nav">
+        <a href="#hero">Home</a>
+        <a href="#vision">Our Vision</a>
+        <a href="#innovation">Innovation Support</a>
+        <a href="#technology">Our Technology</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#location">Operational Hub</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-    <section class="hero" id="hero">
-        <div class="hero-content">
-            <h1>Pursuing a Brighter Future by Clearing Human Diseases</h1>
-            <p>Advancing multi-specific platforms inspired by the natural precision of the human immune system.</p>
-        </div>
-    </section>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
 
-    <section class="mission" id="vision">
-        <span class="section-tag">Our Vision</span>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#hero">Home</a>
+      <a href="#vision">Our Vision</a>
+      <a href="#innovation">Innovation Support</a>
+      <a href="#technology">Our Technology</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#location">Operational Hub</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-kicker">Immunotherapy • Innovation • Translation</span>
+        <h1>Pursuing a Brighter Future by Clearing Human Diseases</h1>
         <p>
-            NextGenVax is dedicated to developing groundbreaking immunotherapies. By leveraging
-            precision medicine, we bridge the gap between discovery and cure, empowering the patient's
-            own immune system to target and erase tumors and infectious diseases directly.
+          Advancing targeted vaccine and immunotherapy platforms inspired by the natural precision
+          of the human immune system.
         </p>
-    </section>
+        <div class="hero-buttons">
+          <a href="#technology" class="btn btn-primary">
+            Explore Our Technology <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-    <section class="innovation" id="innovation">
-        <div class="innovation-text">
-            <span class="section-tag">Innovation Support</span>
-            <h2>Translational Growth Support</h2>
-            <p>
-                NextGenVax is advancing a differentiated vaccine platform designed to address key limitations of 
-                conventional approaches. Our innovation focus centers on scalable mucosal vaccine that can be adapted
-                across infectious disease and cancer applications. This approach supports faster development, broader
-                accessibility, and stronger readiness for future clinical and commercial translation.
-            </p>
-        </div>
-        <div class="innovation-image">
-            <img src="gemi.png" alt="Translational Growth Support">
-        </div>
-    </section>
+  <section class="vision" id="vision">
+    <div class="container">
+      <span class="section-tag">Our Vision</span>
+      <h2 class="section-title">Precision-driven innovation for global health impact</h2>
+      <p class="section-subtitle">
+        We aim to bridge the gap between advanced immunology and real-world clinical translation.
+      </p>
 
-    <section class="technology" id="technology">
-        <div class="technology-text">
-            <span class="section-tag">Our Technology</span>
-            <h2>Targeted Mucosal Platform</h2>
-            <p>
-                Our technology combines a modular antigen design with targeted immune activation Nextgen Vax 
-                proprietory solution. It is built to enhance local and systemic immunity while reducing
-                the burden associated with traditional needle-based administration.
-            </p>
-            <p>
-                The platform integrates immune-enhancing components, disease-relevant targets, and
-                guidance elements within a nanoparticle-based framework to improve uptake, response,
-                and development flexibility across multiple indications.
-            </p>
-        </div>
-        <div class="technology-image">
-            <div class="technology-video-wrapper">
-                <iframe 
-                    src="https://www.youtube.com/watch?v=kcWT8EMYwYY" 
-                    title="NextGenVax Technology Video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </section>
+      <p class="vision-text">
+        NextGenVax is dedicated to developing breakthrough immunotherapies and vaccine technologies.
+        By combining targeted immune activation, modular design, and translational strategy, we work
+        to empower the immune system against infectious diseases and cancer with greater precision,
+        accessibility, and clinical relevance.
+      </p>
+    </div>
+  </section>
 
-    <section class="consulting" id="leadership">
-        <div class="consulting-text">
-            <span class="section-tag">Leadership</span>
-            <h2>Expert Scientific Leadership</h2>
-            <p>
-                Our world-class advisory board comprises leaders in immunology, oncology, and
-                biotechnology. Together, we bridge the gap between complex molecular research
-                and life-saving clinical applications, ensuring NextGenVax remains at the
-                pinnacle of vaccine innovation.
-            </p>
-        </div>
-        <div class="consulting-image">
-            <img src="cons.png" alt="Consulting Team">
-        </div>
-    </section>
-
-    <section class="location" id="location">
-        <span class="section-tag">Operational Hub</span>
-        <h2>Oslo Life Science Cluster</h2>
+  <section class="innovation" id="innovation">
+    <div class="container split-section">
+      <div class="content-card">
+        <span class="section-tag">Innovation Support</span>
+        <h2 class="section-title">Translational Growth Support</h2>
         <p>
-            Located in the heart of Oslo's thriving life sciences district, our headquarters serves as a hub
-            for international collaboration and cutting-edge laboratory research.
+          NextGenVax is advancing a differentiated vaccine platform designed to address important
+          limitations of conventional approaches.
         </p>
-        <div class="location-image">
-            <img src="bil.png" alt="Oslo Location">
+        <p>
+          Our innovation strategy focuses on scalable mucosal vaccine solutions that can be adapted
+          across infectious disease and cancer applications, supporting faster development and broader
+          future accessibility.
+        </p>
+        <p>
+          By building with translation in mind from the beginning, we strengthen readiness for
+          preclinical validation, clinical development, and future partnering opportunities.
+        </p>
+      </div>
+
+      <div class="media-card">
+        <img src="gemi.png" alt="Translational Growth Support">
+      </div>
+    </div>
+  </section>
+
+  <section class="technology" id="technology">
+    <div class="container split-section reverse">
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/kcWT8EMYwYY?rel=0"
+          title="NextGenVax Technology Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="content-card">
+        <span class="section-tag">Our Technology</span>
+        <h2 class="section-title">Targeted Mucosal Platform</h2>
+        <p>
+          Our platform combines modular antigen design, immune-enhancing functionality, and targeted
+          delivery concepts in a technology framework built for stronger local and systemic immunity.
+        </p>
+        <p>
+          Designed to reduce dependence on conventional needle-based administration, the platform
+          supports more flexible development across multiple disease areas while maintaining a strong
+          focus on manufacturability and translational potential.
+        </p>
+        <p>
+          This approach enables disease-relevant targeting, adaptable platform design, and improved
+          readiness for future clinical and commercial development.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="leadership" id="leadership">
+    <div class="container split-section">
+      <div class="content-card">
+        <span class="section-tag">Leadership</span>
+        <h2 class="section-title">Expert Scientific Leadership</h2>
+        <p>
+          Our advisory and leadership network brings together expertise across immunology, oncology,
+          translational medicine, and biotechnology development.
+        </p>
+        <p>
+          This scientific depth supports our ability to connect complex molecular innovation with
+          practical development pathways, helping ensure that promising technologies move toward
+          meaningful patient impact.
+        </p>
+      </div>
+
+      <div class="media-card">
+        <img src="cons.png" alt="NextGenVax scientific leadership">
+      </div>
+    </div>
+  </section>
+
+  <section class="location" id="location">
+    <div class="container">
+      <span class="section-tag">Operational Hub</span>
+      <h2 class="section-title">Oslo Life Science Cluster</h2>
+      <p class="section-subtitle">
+        Located in the heart of Oslo’s life science environment, our operational base supports
+        collaboration, research development, and international innovation engagement.
+      </p>
+
+      <div class="location-image">
+        <img src="bil.png" alt="Oslo location">
+      </div>
+    </div>
+  </section>
+
+  <section class="highlights">
+    <div class="container">
+      <div class="highlight-grid">
+        <div class="highlight-box">
+          <i class="fas fa-shield-virus"></i>
+          <h3>Targeted Immunity</h3>
+          <p>Built to support stronger and more directed immune activation across relevant disease settings.</p>
         </div>
-    </section>
 
-    <footer id="contact">
-        <div class="footer-contact">
-            <span class="contact-label">General Inquiries</span>
-            <a href="mailto:info@nextgenvax.com" class="email-link">info@nextgenvax.com</a>
-        </div>
-            
-        <div class="footer-address">
-            <a href="#" class="email-link">Office Address: Universitetsgata 2, 0164 Oslo</a>
+        <div class="highlight-box">
+          <i class="fas fa-dna"></i>
+          <h3>Modular Design</h3>
+          <p>Flexible technology architecture adaptable across multiple infectious disease and oncology applications.</p>
         </div>
 
-        <div class="copyright">
-            &copy; 2026 NextGenVax Inc. All Rights Reserved.
+        <div class="highlight-box">
+          <i class="fas fa-vials"></i>
+          <h3>Translational Focus</h3>
+          <p>Designed with preclinical validation, clinical readiness, and scale-up potential in mind.</p>
         </div>
-    </footer>
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+        <div class="highlight-box">
+          <i class="fas fa-globe-europe"></i>
+          <h3>Global Relevance</h3>
+          <p>Created to support broader accessibility and future impact across diverse healthcare settings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show');
-        });
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand-text">NextGen<span>Vax</span></span>
+          <p>
+            Advancing next-generation vaccine and immunotherapy innovation through targeted science,
+            modular design, and translational development.
+          </p>
+        </div>
 
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('show');
-            });
-        });
+        <div>
+          <h3 class="footer-title">Quick Links</h3>
+          <div class="footer-links">
+            <a href="#vision">Our Vision</a>
+            <a href="#innovation">Innovation Support</a>
+            <a href="#technology">Our Technology</a>
+            <a href="#leadership">Leadership</a>
+            <a href="#location">Operational Hub</a>
+          </div>
+        </div>
 
-        document.addEventListener('click', (e) => {
-            if (!menuToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('show');
-            }
-        });
-    </script>
+        <div>
+          <h3 class="footer-title">Contact</h3>
+          <div class="footer-contact">
+            <a href="mailto:info@nextgenvax.com">info@nextgenvax.com</a>
+            <span>Universitetsgata 2, 0164 Oslo</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; 2026 NextGenVax. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('show');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('show');
+      }
+    });
+  </script>
 
 </body>
 </html>
