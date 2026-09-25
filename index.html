@@ -495,11 +495,7 @@
     }
 
     .honeypot {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+      display: none;
     }
 
     .contact-form .btn-primary {
@@ -508,35 +504,15 @@
       font-family: 'Roboto', sans-serif;
     }
 
-    .contact-form .btn-primary:disabled {
-      opacity: 0.65;
-      cursor: wait;
-      transform: none;
-    }
-
     .contact-form .btn-primary:focus-visible {
       outline: 3px solid rgba(0, 86, 179, 0.35);
       outline-offset: 3px;
     }
 
-    .form-status {
+    .form-note {
       margin-top: 16px;
-      font-size: 15px;
-      display: none;
-      padding: 12px 14px;
-      border-radius: 10px;
-    }
-
-    .form-status.success {
-      display: block;
-      background: rgba(109, 187, 45, 0.12);
-      color: #3f7a12;
-    }
-
-    .form-status.error {
-      display: block;
-      background: rgba(200, 40, 40, 0.08);
-      color: #a32020;
+      font-size: 14px;
+      color: var(--text-light);
     }
 
     /* FOOTER */
@@ -895,33 +871,42 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Web3Forms: replace with the access key emailed to you -->
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-        <input type="hidden" name="subject" value="New inquiry from nextgenvax website">
-        <input type="hidden" name="from_name" value="NextGenVax Website">
+      <!--
+        OWNER SETUP (once, after publishing):
+        1. Submit a test inquiry from the live website and complete the security check.
+        2. Open mohammad.arabpour.sinior@gmail.com, check Inbox and Spam,
+           and activate the form using the confirmation email from FormSubmit.
+        3. Send a second inquiry and confirm that it arrives in Gmail.
+        This uses formsubmit.co. No Gmail password or API key belongs in this file.
+        Native POST keeps the provider's verification and response pages visible
+        and also works when JavaScript is disabled.
+      -->
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/mohammad.arabpour.sinior@gmail.com" method="POST" accept-charset="UTF-8" aria-label="Contact NextGenVax">
+        <input type="hidden" name="_subject" value="New inquiry from the NextGenVax website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="true">
 
         <!-- Spam trap: real visitors never see or fill this -->
         <div class="honeypot" aria-hidden="true">
-          <label for="botcheck">Leave this empty</label>
-          <input type="checkbox" name="botcheck" id="botcheck" tabindex="-1" autocomplete="off">
+          <label for="contactWebsite">Leave this empty</label>
+          <input type="text" name="_honey" id="contactWebsite" tabindex="-1" autocomplete="off">
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required autocomplete="name">
+            <input type="text" id="name" name="name" required autocomplete="name" maxlength="120">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required autocomplete="email">
+            <input type="email" id="email" name="email" required autocomplete="email" maxlength="254">
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-group">
             <label for="organization">Organization <span class="optional">(optional)</span></label>
-            <input type="text" id="organization" name="organization" autocomplete="organization">
+            <input type="text" id="organization" name="organization" autocomplete="organization" maxlength="200">
           </div>
           <div class="form-group">
             <label for="topic">Topic</label>
@@ -937,14 +922,14 @@
 
         <div class="form-group">
           <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
+          <textarea id="message" name="message" required maxlength="10000"></textarea>
         </div>
 
         <button type="submit" class="btn btn-primary" id="submitBtn">
           Send message <i class="fas fa-paper-plane"></i>
         </button>
 
-        <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        <p class="form-note">Please complete the security check after sending your message.</p>
       </form>
     </div>
   </section>
@@ -1007,47 +992,6 @@
       }
     });
 
-    // CONTACT FORM: submit in the background and show the result on the page
-    const contactForm = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-    const formStatus = document.getElementById('formStatus');
-    const submitBtnHTML = submitBtn.innerHTML;
-
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      formStatus.className = 'form-status';
-      formStatus.textContent = '';
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending…';
-
-      const data = Object.fromEntries(new FormData(contactForm));
-      data.subject = `Website inquiry: ${data.topic} – ${data.name}`;
-
-      try {
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        const result = await response.json();
-
-        if (response.ok && result.success) {
-          formStatus.className = 'form-status success';
-          formStatus.textContent = 'Message sent. We will get back to you shortly.';
-          contactForm.reset();
-        } else {
-          throw new Error(result.message || 'Submission failed');
-        }
-      } catch (err) {
-        formStatus.className = 'form-status error';
-        formStatus.textContent = 'The message could not be sent. Check your connection and try again.';
-        console.error('Contact form error:', err);
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = submitBtnHTML;
-      }
-    });
   </script>
 
 </body>
