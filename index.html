@@ -145,29 +145,44 @@
     }
 
     /* HERO */
+    /*
+      The photo is a real <img> shown at its natural proportions:
+      no cropping, no overlay, no filter — exactly as the file looks.
+      The text sits on top of the photo on wide screens and moves
+      below it on tablets/phones.
+    */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding-top: var(--nav-height);
-      /* Dark tint only behind the text on the left; photo stays full colour on the right */
-      background:
-        linear-gradient(90deg,
-          rgba(10, 25, 47, 0.55) 0%,
-          rgba(10, 25, 47, 0.25) 45%,
-          rgba(10, 25, 47, 0) 75%),
-        url('clif.png') center/cover no-repeat;
+      margin-top: var(--nav-height);   /* start below the fixed menu bar so it doesn't cover the top of the photo */
+      display: grid;
+      background: var(--dark-navy);
       color: var(--white);
     }
 
+    .hero-image,
+    .hero-overlay {
+      grid-area: 1 / 1;                /* image and text share the same cell = text on top of photo */
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;                    /* whole picture, original aspect ratio */
+    }
+
+    .hero-overlay {
+      display: flex;
+      align-items: center;
+      padding: 48px 0;
+    }
+
+    /* Crisp, tight shadow around the letters only — does not tint the photo */
     .hero h1,
     .hero p,
     .hero-kicker {
-      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 2px 8px rgba(0, 0, 0, 0.35);
     }
 
     .hero-content {
-      max-width: 860px;
+      max-width: 760px;
     }
 
     .hero-kicker {
@@ -184,7 +199,7 @@
 
     .hero h1 {
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(42px, 6vw, 74px);
+      font-size: clamp(36px, 4.6vw, 64px);
       line-height: 1.08;
       font-weight: 800;
       margin-bottom: 22px;
@@ -192,9 +207,9 @@
     }
 
     .hero p {
-      font-size: clamp(18px, 2.2vw, 24px);
-      max-width: 760px;
-      color: rgba(255,255,255,0.92);
+      font-size: clamp(17px, 1.8vw, 22px);
+      max-width: 680px;
+      color: var(--white);
       margin-bottom: 32px;
     }
 
@@ -615,6 +630,18 @@
       .vision-text {
         font-size: 21px;
       }
+
+      /* Tablets/phones: photo on top, text underneath on navy */
+      .hero-overlay {
+        grid-area: 2 / 1;
+        padding: 44px 0 56px;
+      }
+
+      .hero h1,
+      .hero p,
+      .hero-kicker {
+        text-shadow: none;
+      }
     }
 
     @media (max-width: 640px) {
@@ -703,7 +730,8 @@
   </nav>
 
   <header class="hero" id="hero">
-    <div class="container">
+    <img src="clif.png" alt="" class="hero-image">
+    <div class="container hero-overlay">
       <div class="hero-content">
         <span class="hero-kicker">Immunotherapy • Innovation • Translation</span>
         <h1>Pursuing a Brighter Future by Clearing Human Diseases</h1>
