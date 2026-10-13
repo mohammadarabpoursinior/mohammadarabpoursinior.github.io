@@ -150,10 +150,20 @@
       display: flex;
       align-items: center;
       padding-top: var(--nav-height);
+      /* Dark tint only behind the text on the left; photo stays full colour on the right */
       background:
-        linear-gradient(rgba(10, 25, 47, 0.58), rgba(10, 25, 47, 0.45)),
+        linear-gradient(90deg,
+          rgba(10, 25, 47, 0.55) 0%,
+          rgba(10, 25, 47, 0.25) 45%,
+          rgba(10, 25, 47, 0) 75%),
         url('clif.png') center/cover no-repeat;
       color: var(--white);
+    }
+
+    .hero h1,
+    .hero p,
+    .hero-kicker {
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
     }
 
     .hero-content {
