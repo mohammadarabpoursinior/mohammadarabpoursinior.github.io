@@ -163,9 +163,17 @@
       grid-area: 1 / 1;                /* image and text share the same cell = text on top of photo */
     }
 
+    /*
+      Shows only the band you marked: full width, from ~11% to ~58% down the photo.
+      aspect-ratio = 1024 / 481 (the marked band's proportions);
+      object-position 21% = slides the photo so that band is what's visible.
+    */
     .hero-image {
       width: 100%;
-      height: auto;                    /* whole picture, original aspect ratio */
+      aspect-ratio: 1024 / 481;
+      height: auto;
+      object-fit: cover;
+      object-position: 50% 21%;
     }
 
     .hero-overlay {
