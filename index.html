@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="Luminous%20biotech%20membrane%20in%20icy%20mist.png" fetchpriority="high">
+  <link rel="preload" as="image" href="hero.jpg" fetchpriority="high">
   <style>
     /* =========================================================
        BASE: fonts, colours and shared text styles (from the GPT design)
@@ -18,8 +18,7 @@
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head) + 20px)}
     body{margin:0;font-family:Manrope,Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
-    body:has(dialog[open]){overflow:hidden}
-    h1,h2,h3,p,figure{margin:0}
+        h1,h2,h3,p,figure{margin:0}
     a{color:inherit;text-decoration:none}
     button,input,textarea,select{font:inherit}
     button{cursor:pointer;color:inherit}
@@ -104,7 +103,7 @@
     .intro-note::before{content:"";width:30px;height:1px;background:#267c72}
 
     /* =========================================================
-       3. PLATFORM (your Slide7.jpg in the figure)
+       3. PLATFORM (only your three-part molecule, mol.png)
        ========================================================= */
     .platform{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .platform-heading,.hub-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:55px}
@@ -118,14 +117,8 @@
     .plus{font-size:23px;font-weight:400;color:#4f6a70;text-align:center;transition:transform .2s}
     .platform-accordion details[open] .plus{transform:rotate(45deg)}
     .platform-accordion details p{padding:15px 31px 0 47px;color:var(--muted);font-size:14px;line-height:1.85}
-    .platform-figure{position:relative;background:#edf3f0;padding:36px;border:1px solid #e3ebe6;border-radius:4px}
-    .figure-overline{color:#4d6c63;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
-    .figure-overline::after{content:"";height:6px;width:6px;border-radius:50%;background:#267c72}
-    .platform-slide{width:100%;height:auto;object-fit:contain;background:#fff;border-radius:2px;margin-bottom:24px}
-    .figure-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #d5e1d9;padding-top:19px;gap:12px}
-    .figure-footer figcaption{font-size:10px;color:#60766d}
-    .expand-button{display:flex;align-items:center;gap:7px;padding:5px 0;background:none;border:0;font-size:10px;font-weight:700}
-    .expand-button .icon{width:14px;height:14px}
+    .platform-figure{background:#fff;border:1px solid #e3ebe6;border-radius:4px;padding:40px;display:flex;align-items:center;justify-content:center;min-height:420px}
+    .platform-molecule{width:100%;max-width:520px;height:auto;object-fit:contain}
 
     /* =========================================================
        4. RESEARCH FOCUS
@@ -203,7 +196,7 @@
     .form-feedback{color:#486f5c;font-size:11px;line-height:1.8;margin-top:14px}
 
     /* =========================================================
-       FOOTER + PLATFORM DIALOG
+       FOOTER
        ========================================================= */
     .footer{background:var(--navy);color:#e2ecef;padding:55px 0 24px}
     .footer-main{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:60px;padding-bottom:42px}
@@ -214,12 +207,6 @@
     .footer-links a:hover{color:#d2efd9}
     .footer-bottom{border-top:1px solid #284450;padding-top:24px;display:flex;gap:20px;justify-content:space-between;font-size:9px;color:#6e8998}
     .footer-bottom span:last-child{letter-spacing:.08em}
-    .platform-dialog{border:0;border-radius:6px;padding:30px;max-width:1100px;width:calc(100% - 40px);max-height:92vh;overflow:auto;background:#edf3f0;color:var(--ink);box-shadow:0 30px 100px #0006}
-    .platform-dialog::backdrop{background:#071d2dd9;backdrop-filter:blur(4px)}
-    .dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:20px}
-    .dialog-heading h2{font-size:23px;letter-spacing:-.03em}
-    .dialog-close{height:38px;width:38px;display:flex;justify-content:center;align-items:center;border:1px solid #c2d4c6;background:none;border-radius:3px}
-    .platform-dialog img{width:100%;height:auto;background:#fff}
 
     /* =========================================================
        RESPONSIVE
@@ -261,7 +248,7 @@
       .platform-heading,.hub-heading{gap:30px}.platform-heading>p,.hub-heading>p{font-size:12px;max-width:250px}
       .platform-grid{gap:30px;grid-template-columns:1fr 1fr}
       .platform-accordion summary{font-size:16px;grid-template-columns:25px 1fr 19px;gap:10px}.platform-accordion details p{padding-left:35px;font-size:12px}
-      .platform-figure{padding:22px}.figure-footer{flex-wrap:wrap;gap:5px}
+      .platform-figure{padding:24px;min-height:0}
       .focus-tabs{margin-top:22px}.focus-heading{align-items:flex-start;flex-direction:column;gap:0}.focus-body{padding:30px}.focus-body>p{font-size:12px}.focus-art{min-height:380px}.focus-tags{margin-bottom:24px}
       .copy>p:not(.eyebrow),.contact-copy>p:not(.eyebrow){font-size:14px}
       .principle h3{font-size:19px}.principle p{font-size:12px}
@@ -286,7 +273,7 @@
       .platform-heading,.hub-heading{align-items:flex-start;flex-direction:column;gap:20px;margin-bottom:37px}
       .platform-heading>p,.hub-heading>p{font-size:14px;max-width:430px}
       .platform-accordion summary{font-size:18px;grid-template-columns:30px 1fr 22px}.platform-accordion details p{padding-left:40px;font-size:13px}
-      .platform-figure{padding:22px}.figure-footer{flex-wrap:nowrap;gap:15px}
+      .platform-figure{padding:24px;min-height:0}
       .focus-heading{margin-bottom:30px}.focus-tabs{margin-top:28px;max-width:100%;width:max-content}.focus-tab{font-size:11px;padding:12px 17px}
       .focus-panel{grid-template-columns:1fr}.focus-art{min-height:280px;order:2}.focus-art svg{width:57%;max-height:220px}
       .focus-body{padding:34px}.focus-body h3{font-size:32px;max-width:450px}.focus-body>p{font-size:14px}.focus-tags{margin-bottom:28px}
@@ -298,7 +285,7 @@
       .contact-form{padding:28px}
       .footer-main{grid-template-columns:1fr 1fr;gap:35px}.footer-main>div:first-child{grid-column:1 / -1}.footer-statement{max-width:390px}
       .footer-bottom{flex-direction:column;gap:9px}
-      .platform-dialog{padding:21px}.dialog-heading h2{font-size:20px}
+      
     }
 
     @media(max-width:400px){
@@ -307,7 +294,7 @@
       .hero{min-height:745px}.hero h1{font-size:47px}.hero-actions{gap:20px}.hero-actions .button{padding:15px 18px;font-size:12px}
       .hero-description{font-size:13px}.hero-bottom{margin-top:0}
       h2{font-size:37px}
-      .platform-figure,.media-frame,.hub-image{padding:10px}
+      .platform-figure{padding:16px}.media-frame,.hub-image{padding:10px}
       .form-row{grid-template-columns:1fr;gap:0}.contact-form{padding:23px}
       .focus-body{padding:27px}.focus-tab{padding:11px 14px}
       .wordmark{font-size:20px}
@@ -325,7 +312,6 @@
     <symbol id="pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
     <symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
     <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
-    <symbol id="expand" viewBox="0 0 24 24"><path d="M14 4h6v6m0-6-7 7M10 20H4v-6m0 6 7-7"/></symbol>
   </svg>
 
   <!-- HEADER -->
@@ -350,7 +336,7 @@
   <main id="main">
     <!-- 1. HERO -->
     <section class="hero" id="home" aria-labelledby="hero-title">
-      <img class="hero-image" src="Luminous%20biotech%20membrane%20in%20icy%20mist.png" alt="" width="1774" height="887" fetchpriority="high">
+      <img class="hero-image" src="hero.jpg" alt="" width="1774" height="887" fetchpriority="high">
       <div class="wrap hero-content">
         <p class="eyebrow">Immunology. Innovation. Translation.</p>
         <h1 id="hero-title">Precision at the<br><span class="serif">heart of immunity.</span></h1>
@@ -401,12 +387,7 @@
             <details><summary><span class="module-number">03</span><span>Targeted delivery</span><span class="plus" aria-hidden="true">+</span></summary><p>Exploring targeting and delivery concepts, including mucosal approaches, while keeping manufacturability and translational evaluation in view.</p></details>
           </div>
           <figure class="platform-figure">
-            <div class="figure-overline">Platform architecture</div>
-            <img class="platform-slide" src="Slide7.jpg" alt="NextGenVax targeted mucosal platform overview">
-            <div class="figure-footer">
-              <figcaption>NextGenVax platform overview</figcaption>
-              <button class="expand-button" id="expandPlatform" type="button" aria-haspopup="dialog" hidden>View larger <svg class="icon" aria-hidden="true"><use href="#expand"/></svg></button>
-            </div>
+            <img class="platform-molecule" src="mol.png" alt="Three-part NextGenVax platform molecule: antigen, immune enhancement and targeting">
           </figure>
         </div>
       </div>
@@ -577,14 +558,6 @@
     </div>
   </footer>
 
-  <!-- Larger view of the platform slide -->
-  <dialog class="platform-dialog" id="platformDialog" aria-labelledby="dialog-title">
-    <div class="dialog-heading">
-      <h2 id="dialog-title">Platform overview</h2>
-      <button class="dialog-close" type="button" id="closePlatform" aria-label="Close platform overview"><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button>
-    </div>
-    <img src="Slide7.jpg" alt="NextGenVax targeted mucosal platform overview" loading="lazy">
-  </dialog>
 
   <script>
     'use strict';
@@ -646,19 +619,6 @@
         }
       });
     });
-
-    // "View larger" for the platform slide
-    const dialog = document.getElementById('platformDialog');
-    const expand = document.getElementById('expandPlatform');
-    if (typeof dialog.showModal === 'function') {
-      expand.hidden = false;
-      expand.addEventListener('click', () => dialog.showModal());
-      document.getElementById('closePlatform').addEventListener('click', () => dialog.close());
-      dialog.addEventListener('click', event => {
-        const bounds = dialog.getBoundingClientRect();
-        if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
-      });
-    }
 
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('contactForm').addEventListener('submit', () => {
