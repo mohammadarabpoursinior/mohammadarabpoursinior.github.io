@@ -103,12 +103,16 @@
     .intro-note::before{content:"";width:30px;height:1px;background:#267c72}
 
     /* =========================================================
-       3. PLATFORM (mol.png in the same narrow frame as the other pictures)
+       3. PLATFORM (mol1.png in the same narrow frame as the other pictures)
        ========================================================= */
     .platform{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .platform-heading,.hub-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:55px}
     .platform-heading>p,.hub-heading>p{max-width:340px;color:var(--muted);font-size:14px;line-height:1.85}
-    .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+    .platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:stretch}
+    /* Picture is exactly as tall as the three-item list beside it. The whole molecule
+       is always shown (never cropped), centred on white inside the tinted frame */
+    .platform-picture{position:relative;min-height:240px}
+    .media-frame.platform-picture img{position:absolute;inset:14px;width:calc(100% - 28px);height:calc(100% - 28px);object-fit:contain;object-position:center;background:#fff}
     .platform-accordion{border-top:1px solid var(--line)}
     .platform-accordion details{border-bottom:1px solid var(--line);padding:22px 0}
     .platform-accordion summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:34px 1fr 22px;align-items:center;gap:13px;font-size:18px;font-weight:600;letter-spacing:-.03em}
@@ -263,6 +267,7 @@
       .hero-bottom{grid-template-columns:1fr;gap:13px;padding:23px 0}.hero-meta{font-size:11px}
       .section-intro,.platform-grid,.split,.contact-grid{grid-template-columns:1fr;gap:35px}
       .split .media-frame{order:2}
+      .platform-picture{min-height:0;aspect-ratio:16 / 9}
       .intro{padding-bottom:75px}.intro-copy{padding-top:0}.intro-copy>p:first-child{font-size:19px}.intro-copy>p{font-size:14px}
       .section-intro h2{max-width:420px}
       .eyebrow{font-size:10px;margin-bottom:20px}
@@ -289,7 +294,7 @@
       .hero{min-height:745px}.hero h1{font-size:47px}.hero-actions{gap:20px}.hero-actions .button{padding:15px 18px;font-size:12px}
       .hero-description{font-size:13px}.hero-bottom{margin-top:0}
       h2{font-size:37px}
-      .media-frame,.hub-image{padding:10px}
+      .media-frame,.hub-image{padding:10px}.media-frame.platform-picture img{inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)}
       .form-row{grid-template-columns:1fr;gap:0}.contact-form{padding:23px}
       .focus-body{padding:27px}.focus-tab{padding:11px 14px}
       .wordmark{font-size:20px}
@@ -381,8 +386,8 @@
             <details><summary><span class="module-number">02</span><span>Immune enhancement</span><span class="plus" aria-hidden="true">+</span></summary><p>Investigating immune-enhancing functionality to understand how platform design influences the quality and direction of immune responses.</p></details>
             <details><summary><span class="module-number">03</span><span>Targeted delivery</span><span class="plus" aria-hidden="true">+</span></summary><p>Exploring targeting and delivery concepts, including mucosal approaches, while keeping manufacturability and translational evaluation in view.</p></details>
           </div>
-          <div class="media-frame">
-            <img src="mol.png" alt="NextGenVax three-part platform molecule">
+          <div class="media-frame tint platform-picture">
+            <img src="mol1.png" alt="NextGenVax three-part platform molecule">
           </div>
         </div>
       </div>
